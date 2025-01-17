@@ -9,16 +9,14 @@ class House:
         else:
             for i in range(1, new_floor + 1):
                 print(i)
-
+    def __str__(self):
+        return f'Название: {self.name}, кол-во этажей: {self.number_of_floors}'
     def __len__(self):
         return self.number_of_floors
 
-    #def __format__(self, formatstr):
-        #return self.__format__()
-
     def __eq__(self, other):
         if isinstance(other, House):
-            return self.number_of_floors == other.number_of_floors
+             return self.number_of_floors == other.number_of_floors
         elif isinstance(other, int):
             return self.number_of_floors == other
     def __it__(self, other):
@@ -36,14 +34,13 @@ class House:
             self.number_of_floors += value.number_of_floors
         elif isinstance(value, int):
             self.number_of_floors += value
-        return self.number_of_floors
+        return self
 
     def __radd__(self, value):
         return self.__add__(value)
     def __iadd__(self, value):
         return  self.__add__(value)
-    def __str__(self):
-        return f'Название: {self.name}, кол-во этажей: {self.number_of_floors}'
+
 
 
 h1 = House('ЖК Эльбрус', 10)
@@ -56,7 +53,7 @@ print(h1 == h2) # __eq__
 h1 = h1 + 10 # __add__
 print(h1)
 print(h1 == h2)
-h1 += 10 # __iadd__
+h1 += 10     # __iadd__
 print(h1)
 h2 = 10 + h2 # __radd__
 print(h2)
